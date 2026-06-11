@@ -27,12 +27,27 @@ export async function middleware(request: NextRequest) {
   const isMock = hasMockSession || 
                  !process.env.NEXT_PUBLIC_SUPABASE_URL || 
                  process.env.NEXT_PUBLIC_SUPABASE_URL.includes("mock") ||
+                 process.env.NEXT_PUBLIC_SUPABASE_URL.includes("placeholder") ||
                  !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
   if (isMock) {
-    const protectedPaths = ['/dashboard', '/transactions', '/projects', '/settings', '/import', '/onboarding']
-    const isProtected = protectedPaths.some((p) => request.nextUrl.pathname.startsWith(p))
-    if (isProtected) {
+    const isAuthPage = request.nextUrl.pathname.startsWith('/login') || request.nextUrl.pathname.startsWith('/register')
+    
+    if (hasMockSession) {
+      if (isAuthPage) {
+        const url = request.nextUrl.clone()
+        url.pathname = '/dashboard'
+        return NextResponse.redirect(url)
+      }
+      return supabaseResponse
+    } else {
+      const protectedPaths = ['/dashboard', '/transactions', '/projects', '/settings', '/import', '/onboarding']
+      const isProtected = protectedPaths.some((p) => request.nextUrl.pathname.startsWith(p))
+      if (isProtected) {
+        const url = request.nextUrl.clone()
+        url.pathname = '/login'
+        return NextResponse.redirect(url)
+      }
       return supabaseResponse
     }
   }
