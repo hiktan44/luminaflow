@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { createClient } from '@/lib/supabase/server'
 import { ProjectCard } from '@/components/projects/ProjectCard'
 import Link from 'next/link'

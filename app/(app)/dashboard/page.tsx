@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { createClient } from '@/lib/supabase/server'
 import { MetricsCard } from '@/components/dashboard/MetricsCard'
 import { RunwayDisplay } from '@/components/dashboard/RunwayDisplay'

@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { createClient } from '@/lib/supabase/server'
 import { TaxProfileForm } from '@/components/settings/TaxProfileForm'
 import type { UserProfile } from '@/types'

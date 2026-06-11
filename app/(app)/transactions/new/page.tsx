@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { createClient } from '@/lib/supabase/server'
 import { TransactionForm } from '@/components/transactions/TransactionForm'
 import type { Project } from '@/types'
