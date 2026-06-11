@@ -1,0 +1,35 @@
+{
+  "name": "luminaflow",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "env -u __NEXT_PRIVATE_STANDALONE_CONFIG -u TURBOPACK -u TURBOPACK_BUILD next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "15.1.7",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "@supabase/supabase-js": "2.49.1",
+    "@supabase/ssr": "0.5.2",
+    "zod": "3.24.2",
+    "lucide-react": "0.473.0",
+    "papaparse": "5.4.1",
+    "clsx": "2.1.1",
+    "tailwind-merge": "3.0.2"
+  },
+  "devDependencies": {
+    "typescript": "5.7.3",
+    "@types/node": "22.13.9",
+    "@types/react": "19.0.10",
+    "@types/react-dom": "19.0.4",
+    "@types/papaparse": "5.3.15",
+    "eslint": "9.21.0",
+    "eslint-config-next": "15.1.7",
+    "postcss": "8.5.1",
+    "@tailwindcss/postcss": "4.2.2",
+    "tailwindcss": "4.2.2"
+  }
+}

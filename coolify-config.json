@@ -1,0 +1,31 @@
+{
+  "name": "luminaflow",
+  "description": "LuminaFlow - Freelancerlar için Nakit Akışı ve Vergi Rezervi Yönetimi",
+  "build_pack": "dockerfile",
+  "dockerfile_location": "Dockerfile",
+  "port_exposes": "3000",
+  "health_check_path": "/api/health",
+  "health_check_interval": 30,
+  "health_check_timeout": 10,
+  "health_check_retries": 3,
+  "environment_variables": [
+    {
+      "key": "NEXT_PUBLIC_SUPABASE_URL",
+      "value": "",
+      "required": true,
+      "description": "Supabase project URL"
+    },
+    {
+      "key": "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+      "value": "",
+      "required": true,
+      "description": "Supabase anonymous key"
+    },
+    {
+      "key": "NODE_ENV",
+      "value": "production",
+      "required": true,
+      "description": "Node environment"
+    }
+  ]
+}
