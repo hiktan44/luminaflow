@@ -7,7 +7,7 @@ import { TransactionList } from '@/components/transactions/TransactionList'
 import { calculateRunway, calculateMonthlyBurnRate } from '@/lib/calculations/runway'
 import { calculateSafeToSpend } from '@/lib/calculations/safe-to-spend'
 import { calculateTaxReserves } from '@/lib/calculations/tax-reserves'
-import type { Transaction, Project } from '@/types'
+import type { Transaction, Project, SafeToSpendResult } from '@/types'
 import { TrendingUp, TrendingDown, DollarSign, Activity } from 'lucide-react'
 
 export default async function DashboardPage() {
@@ -82,7 +82,7 @@ export default async function DashboardPage() {
   const currentBalance = totalIncome - totalExpenses
 
   const runway = calculateRunway(currentBalance, monthlyBurnRate)
-  const safeToSpend = calculateSafeToSpend({
+  const rawSafeToSpend = calculateSafeToSpend({
     totalIncome: currentMonthIncome,
     totalExpenses: currentMonthExpenses,
     taxRateIncome: profile?.tax_rate_income ?? 20,
@@ -90,6 +90,20 @@ export default async function DashboardPage() {
     emergencyFundMonths: profile?.emergency_fund_months ?? 3,
     monthlyBurnRate,
   })
+
+  const safeToSpend: SafeToSpendResult = {
+    total_income: currentMonthIncome,
+    total_expenses: currentMonthExpenses,
+    tax_reserve_income: rawSafeToSpend.income_tax_reserve,
+    tax_reserve_vat: rawSafeToSpend.vat_reserve,
+    emergency_reserve: rawSafeToSpend.emergency_fund_target,
+    safe_to_spend: rawSafeToSpend.safe_to_spend,
+    breakdown: [
+      { label: 'Gelir Vergisi Rezervi', amount: rawSafeToSpend.income_tax_reserve, color: 'bg-amber-500' },
+      { label: 'KDV Rezervi', amount: rawSafeToSpend.vat_reserve, color: 'bg-orange-500' },
+      { label: 'Acil Durum Fonu', amount: rawSafeToSpend.emergency_fund_target, color: 'bg-indigo-500' },
+    ]
+  }
   const taxReserves = calculateTaxReserves({
     grossIncome: totalIncome,
     deductibleExpenses: totalExpenses,
