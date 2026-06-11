@@ -20,7 +20,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
   const status = statusConfig[project.status] ?? { label: project.status, classes: 'bg-slate-100 text-slate-700' }
 
   const formatCurrency = (amount: number) =>
-    new Intl.NumberFormat('tr-TR', { style: 'currency', currency: project.currency }).format(amount)
+    new Intl.NumberFormat('tr-TR', { style: 'currency', currency: project.currency || 'TRY' }).format(amount)
 
   const formatDate = (date: string | null) =>
     date ? new Date(date).toLocaleDateString('tr-TR', { month: 'short', year: 'numeric' }) : null

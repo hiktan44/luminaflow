@@ -29,8 +29,8 @@ export function TransactionList({ transactions, showActions = true }: Transactio
   const router = useRouter()
   const [deletingId, setDeletingId] = useState<string | null>(null)
 
-  const formatCurrency = (amount: number, currency: string) =>
-    new Intl.NumberFormat('tr-TR', { style: 'currency', currency }).format(amount)
+  const formatCurrency = (amount: number, currency?: string) =>
+    new Intl.NumberFormat('tr-TR', { style: 'currency', currency: currency || 'TRY' }).format(amount)
 
   const formatDate = (date: string) =>
     new Date(date).toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' })

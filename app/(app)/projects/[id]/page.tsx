@@ -57,7 +57,7 @@ export default async function ProjectDetailPage({
     .reduce((sum, t) => sum + t.amount, 0)
 
   const formatCurrency = (amount: number) =>
-    new Intl.NumberFormat('tr-TR', { style: 'currency', currency: project.currency }).format(amount)
+    new Intl.NumberFormat('tr-TR', { style: 'currency', currency: project.currency || 'TRY' }).format(amount)
 
   const statusColors: Record<string, string> = {
     active: 'bg-emerald-100 text-emerald-700',

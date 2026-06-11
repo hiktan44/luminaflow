@@ -60,7 +60,8 @@ export const createMockSupabase = () => {
               amount: 45000,
               category: 'project_income',
               date: new Date().toISOString().split('T')[0],
-              description: 'Proje Hakediş Ödemesi'
+              description: 'Proje Hakediş Ödemesi',
+              currency: 'TRY'
             } : [
               {
                 id: 'mock-tx-1',
@@ -68,7 +69,8 @@ export const createMockSupabase = () => {
                 amount: 45000,
                 category: 'project_income',
                 date: new Date().toISOString().split('T')[0],
-                description: 'Proje Hakediş Ödemesi'
+                description: 'Proje Hakediş Ödemesi',
+                currency: 'TRY'
               },
               {
                 id: 'mock-tx-2',
@@ -76,7 +78,8 @@ export const createMockSupabase = () => {
                 amount: 12000,
                 category: 'tools_software',
                 date: new Date().toISOString().split('T')[0],
-                description: 'AWS Sunucu ve SaaS Giderleri'
+                description: 'AWS Sunucu ve SaaS Giderleri',
+                currency: 'TRY'
               },
               {
                 id: 'mock-tx-3',
@@ -84,7 +87,8 @@ export const createMockSupabase = () => {
                 amount: 8000,
                 category: 'office',
                 date: new Date(Date.now() - 1000 * 60 * 60 * 24 * 5).toISOString().split('T')[0],
-                description: 'Ofis Kira ve Stopaj'
+                description: 'Ofis Kira ve Stopaj',
+                currency: 'TRY'
               }
             ]
           }
